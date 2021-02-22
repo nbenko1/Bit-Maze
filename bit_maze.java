@@ -4,7 +4,7 @@ import java.io.*;
 // Nicholai Benko
 // 2/21/21
 // uses depth first search to find a 
-// path through a grid of 1's and 0'1
+// path through a grid of 1's and 0's
 // where a '1' is  path and a '0' is a wall
 
 
@@ -36,6 +36,9 @@ class BitMaze{
 
     }
 
+
+
+
     /**
      * reads a file and turns it into maze represented by a 2d arraylist
      * @param fileName
@@ -48,12 +51,12 @@ class BitMaze{
             File text = new File(fileName);
             Scanner sc = new Scanner(text);
 
-
+            // loops through file and reads into arraylist
             while(sc.hasNextLine()){
                 ArrayList<Character> temp = new ArrayList<Character>();
                 char[] curLine = sc.nextLine().toCharArray();
                 for(char x : curLine){
-                    if(x == '1' || x == '0'){
+                    if(x == '1' || x == '0'){ // only grabs 0's and 1's
                         temp.add(x);
                     }
                 }
@@ -68,6 +71,9 @@ class BitMaze{
 
         return rows;
     }
+
+
+
 
 
     /**
@@ -87,10 +93,10 @@ class BitMaze{
             return;
         }
 
-        boolean[][] visited = new boolean[h+1][l+1];
-        Stack<String> stack = new Stack<>();
+        boolean[][] visited = new boolean[h+1][l+1]; // used to keep track of which squares have been visited
+        Stack<String> stack = new Stack<>(); // stack for DFS
 
-
+        // adds the first '1' to the stack
         for(int i = 0; i<maze.get(0).size(); i++){
             if(maze.get(0).get(i) == '1'){
                 stack.push("0"+","+(i));
@@ -144,6 +150,9 @@ class BitMaze{
         return;
     }
 
+
+
+
     /**
      * prints the path all pretty like
      * @param stack
@@ -164,10 +173,6 @@ class BitMaze{
         }
         System.out.println("");
         System.out.println("----------");
-
-
-
     }
-    
 
 }
